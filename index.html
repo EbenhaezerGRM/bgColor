@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG Color</title>
+    <meta name="description" content="change background color">
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <div class="container ">
+        <div class="frame">
+            <div class="title">  
+                BG Color
+            </div>
+            
+            <div class="box">
+                <div class="circle blue"></div>
+                <div class="circle yellow"></div>
+                <div class="circle red"></div>
+            </div>
+            
+            <div class="box">
+                <input id="favcolor" type="color">
+            </div>
+    
+            <div class="box">
+                <div class="reset">
+                    Reset 🔄
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener("load", () => {
+            const computedStyle = window.getComputedStyle(document.body);
+            defaultColor = computedStyle.backgroundColor;
+            })
+
+            const circles = document.querySelectorAll(".circle");
+            circles.forEach(circles => {
+                circles.addEventListener("click", (style) => {
+                    const computedStyle = window.getComputedStyle(style.target) 
+                    document.body.style.backgroundColor = computedStyle.backgroundColor
+                })
+            })
+
+            const picker = document.getElementById("favcolor");
+            picker.addEventListener("change", () => {
+                const selectedColor = picker.value;
+                document.body.style.backgroundColor = selectedColor
+            })
+
+            const reset = document.querySelector(".reset")
+            reset.addEventListener("click", () => {
+                document.body.style.backgroundColor = defaultColor
+            })
+
+        </script>
+    </div> 
+</body>
+</html>
